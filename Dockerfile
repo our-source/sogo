@@ -4,7 +4,7 @@ RUN apt-get update -qq && \
     apt-get install -yq --no-install-recommends apt-transport-https ca-certificates dirmngr gnupg2 && \
     mkdir ~/.gnupg && \
     echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf && \
-    apt-key adv --keyserver keys.gnupg.net --recv-key 0x810273C4 && \
+    (apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-key 0x810273C4 || apt-key adv --keyserver ipv4.pool.sks-keyservers.net --recv-key 0x810273C4) && \
     echo "deb https://packages.inverse.ca/SOGo/nightly/4/debian/ stretch stretch" > /etc/apt/sources.list.d/SOGo.list && \
     apt-get update -qq && \
     apt-get install -yq --no-install-recommends apache2 sogo sope4.9-gdl1-postgresql sope4.9-gdl1-mysql supervisor memcached memcached && \

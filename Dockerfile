@@ -1,7 +1,5 @@
 FROM debian:stretch
 
-MAINTAINER Johan Smits "johan.smits@leftclick.eu"
-
 RUN apt-get update -qq && \
     apt-get install -yq --no-install-recommends apt-transport-https ca-certificates dirmngr gnupg2 && \
     apt-key adv --keyserver keys.gnupg.net --recv-key 0x810273C4 && \

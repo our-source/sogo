@@ -14,7 +14,8 @@ RUN apt-get update -qq && \
     usermod --home /srv/lib/sogo sogo && \
     ln -s /etc/apache2/conf.d/SOGo.conf /etc/apache2/conf-enabled/SOGo.conf && \
     sed -i -e 's/#RedirectMatch \^\/\$ https:\/\/mail.yourdomain.com\/SOGo/RedirectMatch \^\/\$ \/SOGo/' /etc/apache2/conf-enabled/SOGo.conf && \
-    sed -i -e 's/^-l.*/-l localhost/' /etc/memcached.conf
+    mkdir -p /var/run/memcached/ && \
+    chown memcache:memcache /var/run/memcached
 
 EXPOSE 80 443
 

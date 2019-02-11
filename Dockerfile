@@ -1,9 +1,9 @@
 FROM debian:stretch
 
-MAINTAINER Johan Smits "johan.smits@leftclick.eu"
-
 RUN apt-get update -qq && \
-    apt-get install -yq --no-install-recommends apt-transport-https ca-certificates dirmngr gnupg && \
+    apt-get install -yq --no-install-recommends apt-transport-https ca-certificates dirmngr gnupg2 && \
+    mkdir ~/.gnupg && \
+    echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf && \
     apt-key adv --keyserver keys.gnupg.net --recv-key 0x810273C4 && \
     echo "deb https://packages.inverse.ca/SOGo/nightly/4/debian/ stretch stretch" > /etc/apt/sources.list.d/SOGo.list && \
     apt-get update -qq && \
@@ -14,7 +14,8 @@ RUN apt-get update -qq && \
     usermod --home /srv/lib/sogo sogo && \
     ln -s /etc/apache2/conf.d/SOGo.conf /etc/apache2/conf-enabled/SOGo.conf && \
     sed -i -e 's/#RedirectMatch \^\/\$ https:\/\/mail.yourdomain.com\/SOGo/RedirectMatch \^\/\$ \/SOGo/' /etc/apache2/conf-enabled/SOGo.conf && \
-    sed -i -e 's/^-l.*/-l localhost/' /etc/memcached.conf
+    mkdir -p /var/run/memcached/ && \
+    chown memcache:memcache /var/run/memcached
 
 EXPOSE 80 443
 

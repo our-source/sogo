@@ -215,10 +215,10 @@ spec:
         - mountPath: /etc/sogo/sogo.conf
           name: sogo-conf
           subPath: sogo.conf
+          readOnly: true
       volumes:
       - name: sogo-config
         configMap:
-          defaultMode: 256
           name: sogo-conf
           optional: false
 

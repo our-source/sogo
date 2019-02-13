@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.0
+
+* Use stunnel for sending emails over a TLS protected smtp host
+
 ## v1.0.1
 
 * Add IPv4 fallback keyserver for more stable docker building

@@ -28,6 +28,18 @@ kind: ConfigMap
 metadata:
   name: sogo-conf
 data:
+  stunnel-mail.conf: |-
+    CApath = /etc/ssl/certs/
+    foreground = yes
+    verify = 2
+
+    [smtp-587]
+    client = yes
+    accept = localhost:25
+    connect = smtp.domain.com:587
+    checkHost = smtp.domain.com
+    protocol = smtp
+
   sogo.conf: |-
     {
       /* *********************  Main SOGo configuration file  **********************
@@ -212,6 +224,10 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
+        - mountPath: /etc/stunnel/smtp.conf
+          name: sogo-conf
+          subPath: stunnel-mail.conf
+          readOnly: true
         - mountPath: /etc/sogo/sogo.conf
           name: sogo-conf
           subPath: sogo.conf

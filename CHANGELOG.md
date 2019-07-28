@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.2
+
+* Version bump for new nightly release since v4.0.8
+
 ## v1.1.1
 
 * Version bump for new nightly

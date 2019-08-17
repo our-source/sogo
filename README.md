@@ -9,11 +9,6 @@
 
 SOGo is a easy to use webmail client that has support for imap, smtp, caldav and carddav.
 
-## Environment variables
-
-__MEMCACHE_MEMORY__
-  * Optional, defaults to 64M
-
 ## Configuration options
 
 For all configuration options read here: https://sogo.nu/files/docs/SOGoInstallationGuide.html

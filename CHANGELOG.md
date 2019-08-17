@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.0
+
+* Use Debian Buster base image
+* Drop memcache variable and set to default 128M
+
 ## v1.1.2
 
 * Version bump for new nightly release since v4.0.8

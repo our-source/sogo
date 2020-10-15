@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.1
+
+* Version bump for new nightly release since v5.0.0
+
 ## v1.2.0
 
 * Use Debian Buster base image

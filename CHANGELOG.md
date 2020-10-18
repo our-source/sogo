@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.0.0
 
 * Use the 5.x repo
 * Remove stunnel

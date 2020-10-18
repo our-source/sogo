@@ -23,18 +23,6 @@ kind: ConfigMap
 metadata:
   name: sogo-conf
 data:
-  stunnel-mail.conf: |-
-    CApath = /etc/ssl/certs/
-    foreground = yes
-    verify = 2
-
-    [smtp-587]
-    client = yes
-    accept = localhost:25
-    connect = smtp.domain.com:587
-    checkHost = smtp.domain.com
-    protocol = smtp
-
   sogo.conf: |-
     {
       /* *********************  Main SOGo configuration file  **********************
@@ -64,7 +52,7 @@ data:
       SOGoTrashFolderName = Trash;
       //SOGoIMAPServer = localhost;
       //SOGoSieveServer = sieve://127.0.0.1:4190;
-      //SOGoSMTPServer = 127.0.0.1;
+      //SOGoSMTPServer = smtp://domain:port/?tls=YES;
       //SOGoMailDomain = acme.com;
       SOGoMailingMechanism = smtp;
       //SOGoForceExternalLoginWithEmail = NO;
@@ -219,10 +207,6 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - mountPath: /etc/stunnel/smtp.conf
-          name: sogo-conf
-          subPath: stunnel-mail.conf
-          readOnly: true
         - mountPath: /etc/sogo/sogo.conf
           name: sogo-conf
           subPath: sogo.conf

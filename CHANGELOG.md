@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Use the 5.x repo
+* Remove stunnel
+
 ## v1.2.1
 
 * Version bump for new nightly release since v5.0.0
